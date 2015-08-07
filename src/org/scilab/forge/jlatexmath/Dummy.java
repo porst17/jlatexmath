@@ -64,9 +64,9 @@ public class Dummy {
     }
 
     /**
-     * Changes the type of the atom
+     * Returns the type of the atom
      *
-     * @param t the new type
+     * @return the new type
      */
     public int getType() {
         return type;
