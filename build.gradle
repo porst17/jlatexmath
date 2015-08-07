@@ -1,0 +1,53 @@
+group = 'org.scilab.forge'
+version = '1.0.3'
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+targetCompatibility = 1.7
+sourceCompatibility = 1.7
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.5'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+}
+
+jar {
+    manifest {
+        from file( "${projectDir}/MANIFEST.MF" )
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives jar
+    archives sourcesJar
+    archives javadocJar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
+}
