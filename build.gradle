@@ -97,9 +97,9 @@ bintray {
         publicDownloadNumbers = true
         // attributes= ['a': ['ay1', 'ay2'], 'b': ['bee'], c: 'cee'] //Optional package-level attributes
         version {
-            name = '1.0.3'
-            desc = 'JLaTeXMath v1.0.3'
-            vcsTag = '1.0.3'
+            name = project.version
+            desc = "JLaTeXMath $project.version"
+            vcsTag = project.version
             // attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
