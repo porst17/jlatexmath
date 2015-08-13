@@ -1,0 +1,29 @@
+version = project(':').version
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':')
+    compile 'org.apache.xmlgraphics:fop:1.0'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+            include 'org/scilab/forge/jlatexmath/**/*.java'
+        }
+        resources {
+            srcDir 'src'
+            include 'META-INF/**'
+        }
+    }
+}
+
+jar {
+    manifest.attributes(
+        'Class-Path': configurations.runtime.files.collect { it.name }.join(' ')
+    )
+}

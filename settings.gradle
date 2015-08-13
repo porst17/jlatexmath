@@ -1,0 +1,2 @@
+include 'plugin:fop'
+project(':plugin:fop').name = 'jlatexmath-fop-plugin'
